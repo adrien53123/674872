@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portail Tarbes RP - Avis & Suggestions</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #23272A;
+            color: #FFFFFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .app-container {
+            background-color: #2C2F33;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 500px;
+        }
+        h1 {
+            text-align: center;
+            color: #7289DA;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #B9BBBE;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+        
+        /* Styles des onglets */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            background-color: #36393F;
+            color: #B9BBBE;
+            border: 2px solid #202225;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        .tab-btn:hover {
+            background-color: #40444B;
+            color: #FFF;
+        }
+        .tab-btn.active {
+            background-color: #7289DA;
+            border-color: #7289DA;
+            color: #FFF;
+        }
+
+        /* Contenu des onglets */
+        .tab-content {
+            display: none;
+            background-color: #36393F;
+            border: 1px solid #202225;
+            border-radius: 8px;
+            padding: 20px;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        label:first-of-type {
+            margin-top: 0;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 6px;
+            background-color: #40444B;
+            color: #FFF;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: 2px solid #7289DA;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            background-color: #7289DA;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #5b6eae;
+        }
+        
+        /* Alertes et infos */
+        .info-text {
+            font-size: 12px;
+            color: #B9BBBE;
+            text-align: center;
+            margin-top: 15px;
+            line-height: 1.4;
+        }
+        .reward-box {
+            background-color: rgba(255, 215, 0, 0.1);
+            border-left: 4px solid #FFD700;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #FFF;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <h1>💡 Portail Tarbes RP</h1>
+        <p class="subtitle">Sélectionne ce que tu souhaites nous envoyer</p>
+        
+        <!-- Boutons de navigation (Onglets) -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('avis-tab', this)">⭐ Avis du Serveur</button>
+            <button class="tab-btn" onclick="openTab('suggestions-tab', this)">🛠️ Suggestions</button>
+        </div>
+
+        <!-- ONGLET 1 : AVIS -->
+        <div id="avis-tab" class="tab-content active">
+            <form action="https://formspree.io/f/xvznqerz" method="POST">
+                <input type="hidden" name="Type_De_Formulaire" value="AVIS SUR LE SERVEUR">
+                
+                <label for="pseudo_avis">Ton Pseudo Discord :</label>
+                <input type="text" id="pseudo_avis" name="pseudo" placeholder="Ex: JoueurDu65#1234" required>
+
+                <label for="note">Note globale du serveur (sur 10) :</label>
+                <input type="number" id="note" name="note" min="1" max="10" placeholder="Ex: 8" required>
+
+                <label for="avis">Ton avis général sur le serveur :</label>
+                <textarea id="avis" name="avis" rows="4" placeholder="Ce que tu aimes, ce qui pourrait être mieux (uniquement du texte)..." required></textarea>
+
+                <button type="submit" class="submit-btn">Envoyer mon avis 🚀</button>
+            </form>
+        </div>
+
+        <!-- ONGLET 2 : SUGGESTIONS -->
+        <div id="suggestions-tab" class="tab-content">
+            <form action="https://formspree.io/f/xvznqerz" method="POST">
+                <input type="hidden" name="Type_De_Formulaire" value="SUGGESTION D'AMELIORATION">
+
+                <div class="reward-box">
+                    🎁 <strong>À savoir :</strong> Les meilleures suggestions (pertinentes et réalisables) pourront être récompensées en jeu !
+                </div>
+
+                <label for="pseudo_sugg">Ton Pseudo Discord :</label>
+                <input type="text" id="pseudo_sugg" name="pseudo" placeholder="Ex: JoueurDu65#1234" required>
+
+                <label for="plateforme">Où veux-tu voir cette amélioration ?</label>
+                <select id="plateforme" name="plateforme" required>
+                    <option value="Serveur Discord">Serveur Discord Tarbes RP</option>
+                    <option value="Serveur Roblox">Serveur Roblox (Emergency Hamburg)</option>
+                    <option value="Les deux">Les deux</option>
+                    <option value="Autre">Autre</option>
+                </select>
+
+                <label for="type_idee">Type de proposition :</label>
+                <select id="type_idee" name="type_idee" required>
+                    <option value="Nouveauté">Nouvel ajout</option>
+                    <option value="Modification">Modification de l'existant</option>
+                    <option value="Correction">Correction d'un bug</option>
+                    <option value="Autre">Autre</option>
+                </select>
+
+                <label for="idee">Ton idée d'amélioration :</label>
+                <textarea id="idee" name="idee" rows="4" placeholder="Décris ton idée ici en détail..." required></textarea>
+
+                <button type="submit" class="submit-btn">Envoyer ma suggestion 🚀</button>
+
+                <p class="info-text">Un membre du staff prendra contact avec toi sur Discord une fois ton idée transmise et étudiée.</p>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Script pour gérer le changement d'onglets -->
+    <script>
+        function openTab(tabId, btnElement) {
+            // Cacher tous les contenus
+            var contents = document.querySelectorAll('.tab-content');
+            contents.forEach(function(content) {
+                content.classList.remove('active');
+            });
+
+            // Retirer l'état actif de tous les boutons
+            var buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+
+            // Afficher le contenu ciblé et activer le bouton
+            document.getElementById(tabId).classList.add('active');
+            btnElement.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
